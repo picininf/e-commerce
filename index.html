@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Achados</title>
+  <meta name="description" content="Produtos selecionados com links diretos para a loja." />
+  <meta name="theme-color" content="#05041a" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;800&display=swap" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topo">
+    <span class="marca" id="marca">Achados</span>
+    <h1 class="titulo">Nossos <span class="gradiente">achados</span></h1>
+    <p class="frase" id="frase"></p>
+  </header>
+
+  <main>
+    <ul class="grade" id="grade" aria-live="polite"></ul>
+    <p class="vazio" id="vazio" hidden>Nenhum produto por aqui ainda.</p>
+  </main>
+
+  <footer class="rodape">
+    Os links levam à loja parceira. Podemos receber uma comissão pelas compras feitas por eles, sem custo extra para você.
+    Preços e estoque podem mudar na loja.
+  </footer>
+
+  <script src="produtos.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

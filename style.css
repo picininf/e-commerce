@@ -1,0 +1,151 @@
+/* Paleta igual à da loja: roxo sobre azul-noite. */
+:root {
+  --night-950: #05041a;
+  --night-900: #0a0826;
+  --night-800: #120f38;
+  --brand: #7c3aed;
+  --brand-soft: #8b8cf8;
+  --accent: #c4b5fd;
+  --texto: #f1f5f9;
+  --texto-2: #94a3b8;
+}
+
+* { box-sizing: border-box; margin: 0; }
+
+body {
+  min-height: 100vh;
+  padding: 0 16px;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: var(--texto);
+  background-color: var(--night-950);
+  background-image:
+    radial-gradient(60rem 40rem at 10% -10%, rgb(124 58 237 / 0.22), transparent 60%),
+    radial-gradient(50rem 35rem at 110% 10%, rgb(49 46 129 / 0.35), transparent 60%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Topo */
+.topo { max-width: 1100px; margin: 0 auto; padding: 48px 0 32px; text-align: center; }
+.marca {
+  display: inline-block;
+  padding: 6px 14px;
+  border: 1px solid rgb(255 255 255 / 0.12);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.04);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.titulo {
+  margin-top: 18px;
+  font-family: 'Bebas Neue', Impact, 'Arial Narrow', sans-serif;
+  font-size: clamp(44px, 9vw, 76px);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+}
+.gradiente {
+  background: linear-gradient(90deg, var(--accent), var(--brand-soft));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.frase { margin-top: 12px; color: var(--texto-2); font-size: 16px; }
+
+/* Grade */
+main { max-width: 1100px; margin: 0 auto; }
+.grade {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 260px));
+  justify-content: center;
+}
+.vazio { text-align: center; color: var(--texto-2); padding: 40px 0; }
+
+/* Card */
+.card { animation: entrar 0.5s ease both; }
+.card-link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 20px;
+  border: 1px solid rgb(255 255 255 / 0.1);
+  background: rgb(255 255 255 / 0.04);
+  backdrop-filter: blur(12px);
+  color: inherit;
+  text-decoration: none;
+  overflow: hidden;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.card-link:hover,
+.card-link:focus-visible {
+  transform: translateY(-4px);
+  border-color: rgb(124 58 237 / 0.7);
+  box-shadow: 0 12px 40px rgb(124 58 237 / 0.35);
+}
+.card-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.foto { position: relative; aspect-ratio: 1; background: var(--night-800); overflow: hidden; }
+.foto img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease, opacity 0.4s ease;
+}
+.foto-2 { opacity: 0; }
+.card-link:hover .foto img { transform: scale(1.05); }
+.card-link:hover .foto-2 { opacity: 1; }
+.selo {
+  position: absolute; top: 12px; left: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--brand);
+  box-shadow: 0 0 18px rgb(124 58 237 / 0.6);
+  font-size: 12px; font-weight: 700; letter-spacing: 0.04em;
+  color: #fff;
+}
+
+.info { display: flex; flex-direction: column; gap: 8px; padding: 16px; flex: 1; }
+.loja { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--brand-soft); }
+.nome {
+  font-size: 15px; font-weight: 600; line-height: 1.35;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.preco { font-size: 20px; font-weight: 800; color: var(--accent); margin-top: auto; }
+.botao {
+  display: block;
+  margin-top: 4px;
+  padding: 11px;
+  border-radius: 12px;
+  background: var(--brand);
+  text-align: center;
+  font-weight: 700;
+  font-size: 15px;
+  color: #fff;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+.card-link:hover .botao { background: #8b5cf6; box-shadow: 0 0 24px rgb(124 58 237 / 0.6); }
+
+/* Rodapé */
+.rodape {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 48px 0 32px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.6;
+  color: rgb(148 163 184 / 0.7);
+}
+
+@keyframes entrar { from { opacity: 0; transform: translateY(12px); } }
+
+@media (max-width: 520px) { .grade { grid-template-columns: 1fr; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
