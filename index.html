@@ -3,67 +3,33 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="robots" content="noindex, nofollow" />
-  <title>Painel</title>
+  <title>Achados</title>
+  <meta name="description" content="Produtos selecionados com links diretos para a loja." />
   <meta name="theme-color" content="#05041a" />
-  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;800&display=swap" />
-  <link rel="stylesheet" href="../style.css" />
-  <link rel="stylesheet" href="painel.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="topo">
-    <span class="marca">Painel</span>
-    <h1 class="titulo">Visitas e <span class="gradiente">cliques</span></h1>
+    <span class="marca" id="marca">Achados</span>
+    <h1 class="titulo">Nossos <span class="gradiente">achados</span></h1>
+    <p class="frase" id="frase"></p>
   </header>
 
-  <main class="painel">
-    <form id="entrar" class="caixa entrar" hidden>
-      <label for="senha">Senha do painel</label>
-      <input id="senha" type="password" autocomplete="current-password" required />
-      <button type="submit">Entrar</button>
-      <p class="aviso" id="aviso-senha" role="alert"></p>
-    </form>
-
-    <p class="aviso caixa" id="aviso" role="alert" hidden></p>
-
-    <section id="dados" hidden>
-      <div class="numeros">
-        <div class="caixa numero"><span class="rotulo">Pessoas que visitaram</span><strong id="n-pessoas">0</strong></div>
-        <div class="caixa numero"><span class="rotulo">Pessoas que clicaram em um produto</span><strong id="n-clicaram">0</strong></div>
-        <div class="caixa numero"><span class="rotulo">Visitas (páginas abertas)</span><strong id="n-visitas">0</strong></div>
-        <div class="caixa numero"><span class="rotulo">Cliques nos produtos</span><strong id="n-cliques">0</strong></div>
-      </div>
-      <p class="taxa" id="taxa"></p>
-
-      <div class="graficos">
-        <figure class="caixa grafico">
-          <figcaption>Pessoas por dia <span>últimos 14 dias</span></figcaption>
-          <div class="barras" id="g-pessoas"></div>
-        </figure>
-        <figure class="caixa grafico">
-          <figcaption>Cliques por dia <span>últimos 14 dias</span></figcaption>
-          <div class="barras" id="g-cliques"></div>
-        </figure>
-      </div>
-
-      <div class="caixa">
-        <h2 class="subtitulo">Cliques por produto</h2>
-        <table class="tabela">
-          <thead><tr><th>Produto</th><th class="num">Cliques</th></tr></thead>
-          <tbody id="t-produtos"></tbody>
-        </table>
-      </div>
-
-      <p class="rodape-painel">
-        Atualizado <span id="hora"></span> · <button type="button" id="atualizar" class="link">atualizar</button> ·
-        <button type="button" id="sair" class="link">sair</button><br />
-        "Pessoas" conta navegadores diferentes, de forma aproximada. Ninguém é identificado.
-      </p>
-    </section>
+  <main>
+    <ul class="grade" id="grade" aria-live="polite"></ul>
+    <p class="vazio" id="vazio" hidden>Nenhum produto por aqui ainda.</p>
   </main>
 
-  <script src="../produtos.js"></script>
-  <script src="painel.js"></script>
+  <footer class="rodape">
+    Os links levam à loja parceira. Podemos receber uma comissão pelas compras feitas por eles, sem custo extra para você.
+    Preços e estoque podem mudar na loja.
+  </footer>
+
+  <script src="produtos.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
