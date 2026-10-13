@@ -58,4 +58,32 @@
   })
 
   document.getElementById('vazio').hidden = produtos.length > 0
+
+  // Contador do painel: um número aleatório por navegador, nada pessoal.
+  if (location.protocol !== 'file:') {
+    var visitante
+    try {
+      visitante = localStorage.getItem('v')
+      if (!visitante) {
+        visitante = Math.random().toString(36).slice(2) + Date.now().toString(36)
+        localStorage.setItem('v', visitante)
+      }
+    } catch (e) {
+      visitante = Math.random().toString(36).slice(2) + Date.now().toString(36)
+    }
+    var contar = function (dados) {
+      dados.v = visitante
+      var corpo = JSON.stringify(dados)
+      if (navigator.sendBeacon && navigator.sendBeacon('/api/track', corpo)) return
+      fetch('/api/track', { method: 'POST', body: corpo, keepalive: true }).catch(function () {})
+    }
+    contar({ tipo: 'visita' })
+    var aoClicar = function (e) {
+      if (e.type === 'auxclick' && e.button !== 1) return
+      var a = e.target.closest && e.target.closest('a.card-link')
+      if (a) contar({ tipo: 'clique', link: a.href })
+    }
+    grade.addEventListener('click', aoClicar)
+    grade.addEventListener('auxclick', aoClicar)
+  }
 })()

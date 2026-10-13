@@ -38,3 +38,19 @@ Para trocar o nome e a frase do topo, edite `window.VITRINE` no começo de `prod
 
 - O rodapé avisa que são links de afiliado. Mantenha esse aviso: as lojas e a lei de publicidade pedem.
 - Use fotos do próprio anúncio do produto ou suas. Não coloque seu nome pessoal no site.
+
+## Painel de visitas e cliques (/painel/)
+
+O site conta quantas pessoas entraram e quantas clicaram em cada produto. Os números aparecem em
+`seu-site.vercel.app/painel/`, protegidos por senha. Não guarda IP, nome nem nada pessoal.
+
+**Configurar uma vez na Vercel:**
+1. No projeto da Vercel, abra **Storage** → **Create Database** (ou *Marketplace*) → escolha **Upstash for Redis** → plano grátis → conecte ao projeto.
+   Isso cria sozinho as variáveis `KV_REST_API_URL` e `KV_REST_API_TOKEN`.
+2. Em **Settings → Environment Variables**, crie `PAINEL_SENHA` com a senha que você quiser.
+3. Publique de novo (Deployments → Redeploy, ou envie a pasta outra vez).
+
+Abrindo o `index.html` com dois cliques no computador, nada é contado; só conta no site publicado.
+Visitas suas também contam: para não contar as suas, teste numa aba anônima só de vez em quando.
+
+Não apague as pastas `api` e `painel` nem o `package.json`: são eles que fazem o contador funcionar.
